@@ -1,0 +1,17 @@
+{% extends "detail_base.html" %}
+{% load static %}
+
+{% block page_content %}
+<h1>{{ product.name }}</h1>
+<div class="row">
+    <div class="col-md-8">
+        <img src="{% static product.image %}" alt="" width="80%" style="padding: 20px">
+    </div>
+    <div class="col-md-4">
+        <h5>Price:&nbsp${{ product.price|floatformat:2 }}</h5>
+        <br>
+        <h5>Details:</h5>
+        <p>{{ product.detail|linebreaksbr}}</p>
+    </div>
+</div>
+{% endblock %}

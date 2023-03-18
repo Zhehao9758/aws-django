@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<h1>Products</h1>
+<div class="row">
+{% for product in products %}
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <img class="card-img-top" style="height: 220px;width: 350px;padding: 20px" src="{% static product.image %}">
+            <div class="card-body">
+                <div>
+                    <a href="{% url 'product_detail' product.pk %}"><h5 class="card-title">{{ product.name }}</h5></a>
+                    <h4 class="card-title">${{ product.price|floatformat:2 }}</h4>
+                </div>
+                <p class="card-text">{{ product.description }}</p>
+                <a href="{% url 'add_to_cart' product.pk %}"
+                   class="btn btn-primary" onclick="alert('Item added to cart!')">
+                    Add to cart
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
